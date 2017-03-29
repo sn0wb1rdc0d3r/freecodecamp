@@ -1,0 +1,47 @@
+*, *:before, *:after {
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box; 
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  height: 100vh;
+  font-family: 'Diplomata SC', cursive;
+}
+
+img.logo {
+  height: 50px;
+  width: auto;
+}
+
+img.social{
+  height: 35px;
+  width: auto;
+}
+
+/*flex*/
+.flex {
+  display: flex; 
+  align-items: center; 
+}
+
+.flex-flox-row-wrap {
+  flex-flow: row wrap; 
+}
+
+.flex-justify-content-center {
+  justify-content: center;
+}
+
+.flex-item-left {
+   margin-right: auto;
+}
+
+ #GoogleMap {
+        height: 405px;
+        width: 100%;
+       }
