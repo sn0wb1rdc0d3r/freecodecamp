@@ -83,3 +83,119 @@ function handleLookupProfile(){
 }
 $(document).ready(handleLookupProfile);
 
+function handleRegex() {
+    // Setup
+  var testString = "Ada Lovelace and Charles Babbage designed the first computer and the software that would have run on it.";
+  // Example
+  var expressionToGetSoftware = /software/gi;
+  var softwareCount = testString.match(expressionToGetSoftware).length;
+  // Only change code below this line.
+  var expression = /and/gi;  // Change this Line
+  // Only change code above this line
+  // This code counts the matches of expression in testString
+  var andCount = testString.match(expression).length;
+  $('#divRegex').text(andCount);
+}
+$(document).ready(handleRegex);
+
+function handleJoin() {
+  var stringArray = ['Blue', 'Humpback', 'Beluga'];
+  var numericStringArray = ['80', '9', '700'];
+  var numberArray = [40, 1, 5, 200];
+  var mixedNumericArray = ['80', '9', '700', 40, 1, 5, 200];
+
+  function compareNumbers(a, b) {
+    return a - b;
+  }
+
+  console.log('stringArray:', stringArray);
+  console.log('Sorted:', stringArray.sort());
+
+  console.log('numberArray:', numberArray.join());
+  console.log('Sorted without a compare function:', numberArray.sort());
+  console.log('Sorted with compareNumbers:', numberArray.sort(compareNumbers));
+
+  console.log('numericStringArray:', numericStringArray.join());
+  console.log('Sorted without a compare function:', numericStringArray.sort());
+  console.log('Sorted with compareNumbers:', numericStringArray.sort(compareNumbers));
+
+  console.log('mixedNumericArray:', mixedNumericArray.join());
+  console.log('Sorted without a compare function:', mixedNumericArray.sort());
+  console.log('Sorted with compareNumbers:', mixedNumericArray.sort(compareNumbers));
+}
+$(document).ready(handleJoin);
+
+function handleMappedSort() {
+  var list = ['Delta', 'alpha', 'CHARLIE', 'bravo'];
+
+  // temporary array holds objects with position and sort-value
+  var mapped = list.map(function(el, i) {
+    return { index: i, value: el.toLowerCase() };
+  })
+
+  // sorting the mapped array containing the reduced values
+  mapped.sort(function(a, b) {
+    return +(a.value > b.value) || +(a.value === b.value) - 1;
+  });
+
+  // container for the resulting order
+  var result = mapped.map(function(el){
+    return list[el.index];
+  });
+  console.log(result);
+}
+$(document).ready(handleMappedSort);
+
+function handleAlgorithmReverse() {
+  
+  function reverseString(str) {
+    var arr = str.split('');
+    arr.reverse()
+    str = arr.join('');
+    console.log(str);
+    return str;
+  }
+  reverseString("hello");
+}
+$(document).ready(handleAlgorithmReverse);
+
+function handleFactorialize() {
+function factorialize(num) {
+  var fact = 1;
+  for (i = 1; i <= num; i++) {
+    fact *= i;
+  }
+  return fact;
+}
+
+console.log(factorialize(5));
+
+}
+$(document).ready(handleFactorialize);
+
+function handleCheckPalindrome() {
+  
+  function palindrome(str) {
+    // Good luck!
+    var strRepl = str.replace(/\S/g, '');
+    console.log(strRepl);
+    return str;
+  }
+
+
+
+  palindrome("ey e");
+
+  // Setup
+  var testString = "How many non-space characters are there in this sentence?";
+
+  // Only change code below this line.
+
+  var expression = /\s/g; // Change this line
+
+  // Only change code above this line
+
+  // This code counts the matches of expression in testString
+  var nonSpaceCount = testString.match(expression).length;
+}
+$(document).ready(handleCheckPalindrome);
