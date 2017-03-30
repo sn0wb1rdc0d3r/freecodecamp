@@ -177,25 +177,25 @@ function handleCheckPalindrome() {
   
   function palindrome(str) {
     // Good luck!
-    var strRepl = str.replace(/\S/g, '');
+    var strRepl = str.replace(/[^A-Za-z0-9]/gi, '')
+    .toLowerCase();
     console.log(strRepl);
-    return str;
+    var arr = strRepl.split('');
+    arr.reverse()
+    strReplRev = arr.join('');
+    console.log(strReplRev);
+    console.log(strRepl == strReplRev);
+    return strRepl == strReplRev;
   }
+  palindrome("1 eye for of 1 eye.");
 
-
-
-  palindrome("ey e");
-
-  // Setup
-  var testString = "How many non-space characters are there in this sentence?";
-
-  // Only change code below this line.
-
-  var expression = /\s/g; // Change this line
-
-  // Only change code above this line
-
-  // This code counts the matches of expression in testString
-  var nonSpaceCount = testString.match(expression).length;
 }
 $(document).ready(handleCheckPalindrome);
+
+function handleFindLongestWord(){
+  function findLongestWord(str) {
+    return str.length;
+  }
+  findLongestWord("The quick brown fox jumped over the lazy dog");
+}
+$(document).ready(handleFindLongestWord);
