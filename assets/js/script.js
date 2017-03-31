@@ -275,3 +275,18 @@ function handlerepeatStringNumTimes() {
   repeatStringNumTimes("abc", 3);
 }
 $(document).ready(handlerepeatStringNumTimes);
+
+function handleTruncateString() {
+  function truncateString(str, num) {
+    // Clear out that junk in your trunk
+    if (num>3) {
+      var truncStr = str.slice(0, num-3) + "...";
+    } else {
+      var truncStr = str.slice(0, num) + "...";
+    }
+    console.log(truncStr);
+    return truncStr;
+  }
+  truncateString("A-tisket a-tasket A green and yellow basket", 2);
+}
+$(document).ready(handleTruncateString);
