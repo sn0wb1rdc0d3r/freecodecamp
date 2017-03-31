@@ -267,8 +267,8 @@ function handlerepeatStringNumTimes() {
       for(var i=0; i<num; i++) {
         repStr += str;
       }
-    } else 
-      console.log(repStr);
+    }  
+    console.log(repStr);
     return repStr;
   }
 
