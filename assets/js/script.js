@@ -294,3 +294,24 @@ function handleTruncateString() {
   truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length) //should return "A-tisket a-tasket A green and yellow basket".
 }
 $(document).ready(handleTruncateString);
+
+function handleChunky(){  
+  function chunkArrayInGroups(arr, size) {
+    // Break it up.
+    output = [];
+          for (i = 0; i < arr.length; i += size) {
+              output.push(arr.slice(i, size + i));
+          }
+    console.log(output);
+    return output;
+  }
+  chunkArrayInGroups(["a", "b", "c", "d"], 2);
+  chunkArrayInGroups(["a", "b", "c", "d"], 2) // should return [["a", "b"], ["c", "d"]].
+  chunkArrayInGroups([0, 1, 2, 3, 4, 5], 3) //should return [[0, 1, 2], [3, 4, 5]].
+  chunkArrayInGroups([0, 1, 2, 3, 4, 5], 2) //should return [[0, 1], [2, 3], [4, 5]].
+  chunkArrayInGroups([0, 1, 2, 3, 4, 5], 4) //should return [[0, 1, 2, 3], [4, 5]].
+  chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6], 3) //should return [[0, 1, 2], [3, 4, 5], [6]].
+  chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6, 7, 8], 4) //should return [[0, 1, 2, 3], [4, 5, 6, 7], [8]].
+  chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6, 7, 8], 2) //should return [[0, 1], [2, 3], [4, 5], [6, 7], [8]].
+}
+$(document).ready(handleChunky);
