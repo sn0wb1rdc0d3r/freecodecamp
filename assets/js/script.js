@@ -277,16 +277,20 @@ function handlerepeatStringNumTimes() {
 $(document).ready(handlerepeatStringNumTimes);
 
 function handleTruncateString() {
+  
   function truncateString(str, num) {
     // Clear out that junk in your trunk
-    if (num>3) {
-      var truncStr = str.slice(0, num-3) + "...";
+    var truncStr = "";
+    if (num>3 && num < str.length) {
+      truncStr = str.slice(0, num-3) + "...";
+    } else if (num <= 3) {
+      truncStr = str.slice(0, num) + "..."; 
     } else {
-      var truncStr = str.slice(0, num) + "...";
+      truncStr = str;
     }
-    console.log(truncStr);
-    return truncStr;
+      console.log(truncStr);
+      return truncStr;
   }
-  truncateString("A-tisket a-tasket A green and yellow basket", 2);
+  truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length) //should return "A-tisket a-tasket A green and yellow basket".
 }
 $(document).ready(handleTruncateString);
