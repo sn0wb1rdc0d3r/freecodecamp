@@ -241,3 +241,37 @@ function handleLargestOfFour() {
   largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
 }
 $(document).ready(handleLargestOfFour);
+
+function handleSubstr() {
+  
+  function confirmEnding(str, target) {
+    // "Never give up and good luck will find you."
+    // -- Falcor
+    tLen = target.length;
+    console.log(str.substr(-tLen))
+    sub = str.substr(-tLen);
+    if (sub == target) return true; 
+    else return false;
+        console.log("thisString".substr(-3));
+    return str;
+  }
+  confirmEnding("Bastian", "n");
+}
+$(document).ready(handleSubstr);
+
+function handlerepeatStringNumTimes() {
+  function repeatStringNumTimes(str, num) {
+    // repeat after me
+    var repStr = "";
+    if (num > 0) {
+      for(var i=0; i<num; i++) {
+        repStr += str;
+      }
+    } else 
+      console.log(repStr);
+    return repStr;
+  }
+
+  repeatStringNumTimes("abc", 3);
+}
+$(document).ready(handlerepeatStringNumTimes);
