@@ -310,3 +310,24 @@ function handleChunky(){
   
 }
 $(document).ready(handleChunky);
+
+function handleMutation(){
+  function mutation(arr) {
+    var searchStr = arr[0].toLowerCase();
+    var letter = "";
+    for (var i = 0; i < arr[1].length; i++) {
+      letter = arr[1][i].toLowerCase();
+      if (searchStr.indexOf(letter) != -1) {
+        continue;
+      } else {
+        console.log(false);
+        return false;
+      }
+    }
+    console.log(true);
+    return true;
+  }
+
+  mutation(["hello", "Hello"]);
+}
+$(document).ready(handleMutation);
