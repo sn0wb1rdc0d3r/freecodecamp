@@ -350,3 +350,31 @@
   bouncer([7, "ate", "", false, 9]);
   bouncer([false, null, 0, NaN, undefined, ""]); //should return [].
 })();
+
+(function handleSeekAndDestroy(){
+  function destroyer(arr) {
+  // Remove all the values
+    return arr;
+  }
+
+  destroyer([1, 2, 3, 1, 2, 3], 2, 3); //should return [1, 1].
+  destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3); //should return [1, 5, 1].
+  destroyer([3, 5, 1, 2, 2], 2, 3, 5); //should return [1].
+  destroyer([2, 3, 2, 3], 2, 3); //should return [].
+  destroyer(["tree", "hamburger", 53], "tree", 53); //should return ["hamburger"].
+
+})();
+
+var fruits = ['apple', 'banana', 'grapes', 'mango', 'orange'];
+
+/**
+ * Array filters items based on search criteria (query)
+ */
+function filterItems(query) {
+    return fruits.filter(function(el) {
+     return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
+    })
+}
+
+console.log(filterItems('ap')); // ['apple', 'grapes']
+console.log(filterItems('an')); // ['banana', 'mango', 'orange']
