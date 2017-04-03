@@ -351,30 +351,27 @@
   bouncer([false, null, 0, NaN, undefined, ""]); //should return [].
 })();
 
-(function handleSeekAndDestroy(){
+
+(function handleDestroyer() {
   function destroyer(arr) {
-  // Remove all the values
-    return arr;
+    // Remove all the values
+      var destroy = [];
+      for (var i = 1; i < arguments.length; i++) {
+        destroy.push(arguments[i]);
+      }
+      console.log(arguments[0]);
+      var destroyedArr = arguments[0].filter(function(el) {
+        for (var j = 0; j < destroy.length; j++) {
+          return el != destroy[j];
+        }
+    })
+      return destroyedArr;
   }
 
-  destroyer([1, 2, 3, 1, 2, 3], 2, 3); //should return [1, 1].
-  destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3); //should return [1, 5, 1].
-  destroyer([3, 5, 1, 2, 2], 2, 3, 5); //should return [1].
-  destroyer([2, 3, 2, 3], 2, 3); //should return [].
-  destroyer(["tree", "hamburger", 53], "tree", 53); //should return ["hamburger"].
+  destroyer([1, 2, 3, 1, 2, 3], 2, 3) //should return [1, 1].
+  destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3) //should return [1, 5, 1].
+  destroyer([3, 5, 1, 2, 2], 2, 3, 5) //should return [1].
+  destroyer([2, 3, 2, 3], 2, 3) //should return [].
+  destroyer(["tree", "hamburger", 53], "tree", 53) //should return ["hamburger"].
 
 })();
-
-var fruits = ['apple', 'banana', 'grapes', 'mango', 'orange'];
-
-/**
- * Array filters items based on search criteria (query)
- */
-function filterItems(query) {
-    return fruits.filter(function(el) {
-     return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
-    })
-}
-
-console.log(filterItems('ap')); // ['apple', 'grapes']
-console.log(filterItems('an')); // ['banana', 'mango', 'orange']
