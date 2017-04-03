@@ -378,7 +378,6 @@
 (function handlegetIndexToIns() {
   function getIndexToIns(arr, num) {
     // Find my place in this sorted array.
-    //sort function is taking array elements as strings needs to convert to number
     var sortedArr = arr.sort(function(a,b) {
       return a-b;
     });    
@@ -399,27 +398,40 @@
     }
     return idx;
   }
-
-  getIndexToIns([40, 60], 50);
-  getIndexToIns([10, 20, 30, 40, 50], 35); //should return 3.
-  getIndexToIns([10, 20, 30, 40, 50], 30); // should return 2.
-  getIndexToIns([40, 60], 50); // should return 1.
-  getIndexToIns([3, 10, 5], 3); //should return 0.
-  getIndexToIns([5, 3, 20, 3], 5); //should return 2.
-  getIndexToIns([2, 20, 10], 19); //should return 2.
   getIndexToIns([2, 5, 10], 15); //should return 3.
 })();
 
-var points = [40, 100, 1, 5, 25, 10];
-points.sort(function(a, b){return a-b});
+(function handleRot13() {
+  function rot13(str) { // LBH QVQ VG!
+    var cipherArr = [];
+    var decodedStr = "";
+    //load up the cipherArr
+    for (var i = 0; i < str.length; i++) {
+      cipherArr.push(str.charCodeAt(i)); 
+    }
+    //transform the cipherArr to appropriate charcodes in place
+    //add range for uppercase alpha chars & pass on everything else
+    for (var j = 0; j < cipherArr.length; j++) {
+      if (cipherArr[j] > 77) {
+        cipherArr[j] -= 13;
+        console.log("cipherArr[j]-13: " + cipherArr[j]);
+      } else {
+        cipherArr[j] += 13;
+        console.log("cipherArr[j]+13: " + cipherArr[j]);
+      }
+    }
+    //convert charcodes of cipherArr to decodedStr  
+    for (var k = 0; k < cipherArr.length; k++) {
+      decodedStr += String.fromCharCode(cipherArr[k]);
+    }
+    console.log(decodedStr);
+    return decodedStr;
+  }
 
-var BreakException = {};
+  rot13("NA"); 
 
-try {
-  [1, 2, 3].forEach(function(el) {
-    console.log(el);
-    if (el === 2) throw BreakException;
-  });
-} catch (e) {
-  if (e !== BreakException) throw e;
-}
+  rot13("SERR YBIR?"); //should decode to "FREE LOVE?"
+  rot13("GUR DHVPX OEBJA QBT WHZCRQ BIRE GUR YNML SBK."); //should decode to "THE QUICK BROWN DOG JUMPED OVER THE LAZY FOX."
+})();
+console.log('N'.charCodeAt(0)); // returns 65
+console.log(String.fromCharCode(78, 78-13));  // "NA"
