@@ -332,45 +332,94 @@
 // }
 // $(document).ready(handleMutation);
 
-(function handleFilter() {
+// (function handleFilter() {
   
-  function bouncer(arr) {
-    // Don't show a false ID to this bouncer.
-    function isntFalsy(el) {      
-      var b = Boolean(el);
-      // console.log(b);
-      return b;   
+//   function bouncer(arr) {
+//     // Don't show a false ID to this bouncer.
+//     function isntFalsy(el) {      
+//       var b = Boolean(el);
+//       // console.log(b);
+//       return b;   
+//     }
+
+//     var filterArr = arr.filter(isntFalsy);
+//     console.log(filterArr);
+//     return filterArr;
+//   }
+
+//   bouncer([7, "ate", "", false, 9]);
+//   bouncer([false, null, 0, NaN, undefined, ""]); //should return [].
+// })();
+
+
+// (function handleDestroyer() {
+//   function destroyer(arr) {
+//     // Remove all the values
+//       var search = [];
+//       for (var i = 1; i < arguments.length; i++) {
+//         search.push(arguments[i]);
+//       }
+//       // console.log(arguments[0]);       
+//       function destroy(el) {
+//         return search.indexOf(el) == -1
+//       }
+//       var destroyedArr = arguments[0].filter(destroy);
+//       return destroyedArr;
+//   }
+
+//   destroyer([1, 2, 3, 1, 2, 3], 2, 3) //should return [1, 1].
+//   destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3) //should return [1, 5, 1].
+//   destroyer([3, 5, 1, 2, 2], 2, 3, 5) //should return [1].
+//   destroyer([2, 3, 2, 3], 2, 3) //should return [].
+//   destroyer(["tree", "hamburger", 53], "tree", 53) //should return ["hamburger"].
+
+// })();
+
+(function handlegetIndexToIns() {
+  function getIndexToIns(arr, num) {
+    // Find my place in this sorted array.
+    //sort function is taking array elements as strings needs to convert to number
+    var sortedArr = arr.sort(function(a,b) {
+      return a-b;
+    });    
+    var idx = 0;
+    var BreakException = {};
+    console.log("sortedArr: " + sortedArr + " num: " + num);
+    try {
+      sortedArr.forEach(function (value, i) {
+        console.log("value: " + value + " i: " + i);
+        if(num <= value) {
+          idx = i;
+          console.log("idx: " + idx);
+          throw BreakException;
+        } else idx = sortedArr.length; 
+      });
+    } catch (e) {
+      if (e !== BreakException) throw e;
     }
-
-    var filterArr = arr.filter(isntFalsy);
-    console.log(filterArr);
-    return filterArr;
+    return idx;
   }
 
-  bouncer([7, "ate", "", false, 9]);
-  bouncer([false, null, 0, NaN, undefined, ""]); //should return [].
+  getIndexToIns([40, 60], 50);
+  getIndexToIns([10, 20, 30, 40, 50], 35); //should return 3.
+  getIndexToIns([10, 20, 30, 40, 50], 30); // should return 2.
+  getIndexToIns([40, 60], 50); // should return 1.
+  getIndexToIns([3, 10, 5], 3); //should return 0.
+  getIndexToIns([5, 3, 20, 3], 5); //should return 2.
+  getIndexToIns([2, 20, 10], 19); //should return 2.
+  getIndexToIns([2, 5, 10], 15); //should return 3.
 })();
 
+var points = [40, 100, 1, 5, 25, 10];
+points.sort(function(a, b){return a-b});
 
-(function handleDestroyer() {
-  function destroyer(arr) {
-    // Remove all the values
-      var search = [];
-      for (var i = 1; i < arguments.length; i++) {
-        search.push(arguments[i]);
-      }
-      // console.log(arguments[0]);       
-      function destroy(el) {
-        return search.indexOf(el) == -1
-      }
-      var destroyedArr = arguments[0].filter(destroy);
-      return destroyedArr;
-  }
+var BreakException = {};
 
-  destroyer([1, 2, 3, 1, 2, 3], 2, 3) //should return [1, 1].
-  destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3) //should return [1, 5, 1].
-  destroyer([3, 5, 1, 2, 2], 2, 3, 5) //should return [1].
-  destroyer([2, 3, 2, 3], 2, 3) //should return [].
-  destroyer(["tree", "hamburger", 53], "tree", 53) //should return ["hamburger"].
-
-})();
+try {
+  [1, 2, 3].forEach(function(el) {
+    console.log(el);
+    if (el === 2) throw BreakException;
+  });
+} catch (e) {
+  if (e !== BreakException) throw e;
+}
