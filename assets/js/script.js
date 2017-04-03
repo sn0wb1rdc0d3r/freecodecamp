@@ -355,16 +355,15 @@
 (function handleDestroyer() {
   function destroyer(arr) {
     // Remove all the values
-      var destroy = [];
+      var search = [];
       for (var i = 1; i < arguments.length; i++) {
-        destroy.push(arguments[i]);
+        search.push(arguments[i]);
       }
-      console.log(arguments[0]);
-      var destroyedArr = arguments[0].filter(function(el) {
-        for (var j = 0; j < destroy.length; j++) {
-          return el != destroy[j];
-        }
-    })
+      // console.log(arguments[0]);       
+      function destroy(el) {
+        return search.indexOf(el) == -1
+      }
+      var destroyedArr = arguments[0].filter(destroy);
       return destroyedArr;
   }
 
@@ -375,3 +374,13 @@
   destroyer(["tree", "hamburger", 53], "tree", 53) //should return ["hamburger"].
 
 })();
+
+
+
+
+function isBigEnough(value) {
+  return value >= 10;
+}
+
+var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+// filtered is [12, 130, 44]
