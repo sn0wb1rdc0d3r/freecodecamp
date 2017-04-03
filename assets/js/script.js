@@ -412,12 +412,14 @@
     //transform the cipherArr to appropriate charcodes in place
     //add range for uppercase alpha chars & pass on everything else
     for (var j = 0; j < cipherArr.length; j++) {
-      if (cipherArr[j] > 77) {
+      if (cipherArr[j] > 77 && cipherArr[j] < 91) {
         cipherArr[j] -= 13;
         console.log("cipherArr[j]-13: " + cipherArr[j]);
-      } else {
+      } else if (cipherArr[j] > 64 && cipherArr[j] < 78) {
         cipherArr[j] += 13;
         console.log("cipherArr[j]+13: " + cipherArr[j]);
+      } else {
+        continue;
       }
     }
     //convert charcodes of cipherArr to decodedStr  
